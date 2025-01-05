@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <title>Connexion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: rgb(119,21,189);
+            background: linear-gradient(90deg, rgba(119,21,189,1) 0%, rgba(45,25,127,1) 17%, rgba(0,185,255,1) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .login-wrapper {
+            display: flex;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .login-image {
+            width: 50%;
+            background: url('login_image_prev_ui2.png') no-repeat center center / cover;
+        }
+
+        .login-container {
+            width: 50%;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #253759;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #253759;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input[type="submit"] {
+            background-color: #658cca;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #253759;
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .login-footer a {
+            color: #658cca;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .login-wrapper {
+                flex-direction: column;
+            }
+
+            .login-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .login-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-wrapper">
+
+        
+        <div class="login-container">
+            <h1>Connexion</h1>
+            <form action="/login" method="POST">
+                <label for="email">
+                    <i class="fas fa-envelope"></i> Email
+                </label>
+                <input type="email" id="email" name="email" placeholder="Entrez votre adresse email" required>
+            
+                <label for="password">
+                    <i class="fas fa-lock"></i> Mot de passe
+                </label>
+                <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
+            
+                <input type="submit" value="Se connecter">
+            </form>            
+            <div class="login-footer">
+                <p>Pas encore inscrit ? <a href="signup.html">Créez un compte</a></p>
+            </div>
+        </div>
+         
+         <div class="login-image"></div>
+    </div>
+</body>
+</html>

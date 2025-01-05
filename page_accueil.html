@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>RobotUP Academy</title>
+  <style>
+    /* Barre de défilement personnalisée */
+    ::-webkit-scrollbar {
+      width: 0.6rem;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgb(213, 213, 231);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #253759;
+      border-radius: 20px;
+    }
+
+    /* Style global */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #253759;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: #253759;
+      color: white;
+      padding: 1em;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-left: 20px;
+    }
+
+    nav {
+      display: flex;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      padding: 8px 15px;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    nav a:hover {
+      color: #dca96d;
+      transform: translateY(-5px);
+      transition: transform 0.3s ease-in;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      margin-right: 20px;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      body{
+        overflow-x: hidden;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #253759;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      nav.active {
+        display: flex;
+        animation: slideDown 0.3s ease;
+      }
+
+      nav a {
+        margin: 5px 5px 5px 0px;
+        padding: 10px;
+        text-align: center;
+      }
+      .contact-cards {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-card {
+      width: 90%; 
+      max-width: none; /
+    }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero {
+      background: url('shutterstock_1379131412.jpeg') no-repeat center/cover;
+      color: white;
+      /*background-attachment: fixed;*/
+      padding: 100px 20px;
+      text-align: center;
+      margin-top: 50px;
+      height: 90vh;
+    }
+
+    .hero h1 {
+      font-size: 3em;
+      color: #dca96d;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      margin: 20px 0;
+    }
+
+    .hero a {
+      padding: 10px 20px;
+      background: #658cca;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .Commencer:hover {
+      background-color: #f4f4f4;
+      color: black;
+    }
+
+    .section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #253759;
+    }
+    .contact-cards {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px; 
+    padding: 20px;
+  }
+
+  .contact-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 250px; /* Flex-grow: 1, Flex-shrink: 1, Flex-basis: 250px */
+    max-width: 300px; /* Largeur maximale de chaque carte */
+  }
+
+  .contact-card h3 {
+    font-size: 1.5rem;
+    color: #253759;
+    margin-bottom: 10px;
+  }
+
+  .contact-card p {
+    font-size: 1rem;
+    color: #2c3e50;
+  }
+
+  .contact-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+
+.contact-card p a {
+    text-decoration: none;
+    color: #2c3e50;
+}
+
+    .section.light {
+      background: #f4f4f4;
+    }
+
+    .activite-cards {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      justify-content: center;
+      padding: 20px;
+    } 
+    .activite-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      text-align: center;
+      transition: transform 0.5s ease, filter 0.3s ease;
+    }
+
+    .activite-card .emoji {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .activite-card h3 {
+      font-size: 1.5rem;
+      color: #253759;
+      margin-bottom: 10px;
+    }
+
+    .activite-card p {
+      font-size: 1rem;
+      color: #2c3e50;
+      line-height: 1.5;
+    }
+
+    .activite-card:hover {
+      transform: translateY(-10px);
+      border: 1px solid #341891;
+      filter : drop-shadow(0 0 0.80rem #0743f8);
+    }
+
+    .testimonials {
+    margin: 20px 0;
+    padding: 10px;
+  }
+
+  blockquote {
+    background: #fff;
+    padding: 15px 20px;
+    border-left: 5px solid #658cca;
+    margin: 20px auto;
+    max-width: 600px;
+    font-style: italic;
+    color: #2c3e50;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  cite {
+    display: block;
+    text-align: right;
+    font-size: 0.9em;
+    color: #658cca;
+    margin-top: 5px;
+  }
+
+  .faqs {
+    margin-top: 30px;
+  }
+
+  details {
+    background: #fff;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+
+  summary {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #253759;
+    margin-bottom: 5px;
+  }
+
+  details p {
+    margin-top: 10px;
+    font-size: 0.95em;
+    color: #2c3e50;
+    line-height: 1.5;
+  }
+
+  details[open] summary {
+    color: #dca96d;
+  }
+
+    @media (max-width: 768px) {
+      .activite-cards {
+        grid-template-columns: 1fr;
+        padding: 10px;
+      }
+
+      .activite-card {
+        margin: 0 auto;
+        width: 90%;
+      }
+    }
+
+    footer {
+      background: #253759;
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+    }
+
+    .footer-links a {
+      color: #dca96d;
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 0.9em;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav');
+      toggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+      });
+    });
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="logo"><img src="robotup_logo_prev_ui.png" style="width: 80px;height: 50px;margin-bottom: 5px;"></div>
+  <div class="menu-toggle" aria-label="Menu">&#9776;</div>
+  <nav>
+    <a href="#" class="active">Accueil</a>
+    <a href="#vision">Vision & Approche</a>
+    <a href="#activites">Activités Formations</a>
+    <a href="#temoignages">Témoignages</a>
+    <a href="#contact">Contact</a>
+    <a href="signup.html" style="margin-right: 8px;">S'inscrire</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Construisez l'avenir avec RobotUP Academy</h1>
+  <p>Des formations innovantes pour les esprits curieux et créatifs</p>
+  <a href="#activites">Découvrir nos activités</a>
+  <a href="signup.html" class="Commencer" style="color:#dca96d;background-color: black; border: 1px solid white;">Commencer</a>
+</div>
+
+<section id="vision" class="section">
+  <h2>Vision & Approche</h2>
+  <p>Préparer les jeunes aux défis technologiques grâce à des méthodes innovantes.</p>
+  <div style="display: flex;justify-content: space-around;align-content:center;flex-wrap: wrap;gap: 10px;padding: 20px;">
+  <img src="vision3_prev_ui.png" style="width: 400px;height: 250px;">
+  <img src="vision2_prev_ui.png" style="width: 400px;height: 250px;">
+  <img src="vision_prev_ui.png" style="width: 400px;height: 250px;">
+  </div>
+</section>
+
+<section id="activites" class="section light">
+  <h2>Activités Formations</h2>
+  <p>Découvrez nos programmes : Robotique, Programmation, Design, et plus encore !</p>
+  <div class="activite-cards">
+    <!-- Carte Robotique -->
+    <div class="activite-card">
+      <div class="emoji">🤖</div>
+      <h3>Robotique</h3>
+      <p>Apprenez à construire, programmer et tester des robots pour relever des défis technologiques.</p>
+    </div>
+    <!-- Carte Programmation -->
+    <div class="activite-card">
+      <div class="emoji">💻</div>
+      <h3>Programmation</h3>
+      <p>Développez vos compétences en codage pour créer des logiciels et des applications performantes.</p>
+    </div>
+    <!-- Carte Design -->
+    <div class="activite-card">
+      <div class="emoji">🎨</div>
+      <h3>Design</h3>
+      <p>Explorez le design graphique et l'UX/UI pour concevoir des interfaces modernes et intuitives.</p>
+    </div>
+    <!-- Carte Intelligence Artificielle -->
+    <div class="activite-card">
+      <div class="emoji">🗣️</div>
+      <h3>Communication</h3>
+      <p>Améliorez vos compétences en communication en anglais et en français pour des interactions efficaces.</p>
+    </div>
+    </div>
+</section>
+
+<section id="temoignages" class="section light">
+  <h2>Témoignages & FAQs</h2>
+  <p>Découvrez ce que disent nos participants et trouvez des réponses aux questions fréquentes.</p>
+    
+    <div class="testimonials">
+      <blockquote>
+        <p>“Une expérience enrichissante et captivante pour nos enfants ! Merci RobotUP Academy.”</p>
+        <cite>- Amina B., Parent</cite>
+      </blockquote>
+      <blockquote>
+        <p>“Les cours de robotique ont complètement changé ma perception de la technologie. Excellent !”</p>
+        <cite>- Karim H., Étudiant</cite>
+      </blockquote>
+    </div>
+  
+    
+    <div class="faqs">
+      <details>
+        <summary>Quels sont les âges requis pour participer aux formations ?</summary>
+        <p>Nos formations sont ouvertes aux jeunes dès l'âge de 10 ans et également aux adultes en formation continue.</p>
+      </details>
+      <details>
+        <summary>Quels sont les horaires des formations ?</summary>
+        <p>Les formations se déroulent en semaine et les week-ends. Vous pouvez consulter notre calendrier pour plus de détails.</p>
+      </details>
+      <details>
+        <summary>Quels sont les moyens de paiement acceptés ?</summary>
+        <p>Nous acceptons les paiements par carte bancaire, virement, et espèces.</p>
+      </details>
+      <details>
+        <summary>Offrez-vous des formations pendant les vacances ?</summary>
+        <p>Oui, nous organisons régulièrement des formations intensifs pendant les vacances scolaires.</p>
+      </details>
+    </div>
+  </section>
+  
+
+
+<section id="contact" class="section light">
+  <h2 style="padding: 10px;">Contactez-nous</h2>
+  <div class="contact-cards">
+  <div class="contact-card">
+  <h3>📧 Email</h3>
+  <p>contact@robotup.ma</p>
+</div>
+<div class="contact-card">
+  <h3>📞Téléphone</h3>
+  <p> +212 6 123 456 78</p>
+</div>
+<div class="contact-card">
+  <h3>📍Adresse</h3>
+  <p>N°82, Av Mly Rachid, Témara</p>
+</div>
+</div>
+<div style="margin-top: 30px; text-align: center;">
+  <h3>Nous trouver :</h3>
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.2023455469613!2d-6.906620684797993!3d33.92779238063557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda759d49713a8e5%3A0x2b3ae645cb7e8cb7!2sN%C2%B082%2C%20Av.%20Moulay%20Rachid%2C%20T%C3%A9mara%2C%20Maroc!5e0!3m2!1sfr!2sma!4v1673019608084!5m2!1sfr!2sma" 
+    width="100%" 
+    height="400" 
+    style="border:0; margin-top: 20px;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+</section>
+
+<footer>
+  <p>&copy; 2025 RobotUP Academy - Tous droits réservés</p>
+  <div class="footer-links">
+    <a href="https://www.facebook.com/robotupacademy" target="_blank"><i class="fa-brands fa-facebook fa-xl" style="color: #005eff;"></i></a> | 
+    <a href="https://wa.me/212645612923" target="_blank"><i class="fa-brands fa-whatsapp fa-xl" style="color: #0e9727;"></i></a> |
+    <a href="https://www.instagram.com/robotupacad/" target="_blank"><i class="fa-brands fa-instagram fa-xl" style="color: #e60a0a;"></i></a> 
+  </div>
+</footer>
+
+</body>
+</html>
