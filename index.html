@@ -251,6 +251,7 @@
       transform: translateY(-10px);
       border: 1px solid #341891;
       filter : drop-shadow(0 0 0.80rem #0743f8);
+      cursor: pointer;
     }
 
     .testimonials {
@@ -258,6 +259,12 @@
     padding: 10px;
   }
 
+  .btn{
+    color: #f1f2f5;
+    background-color: #032356;
+    border-radius: 15px;
+    padding: 3px;
+  }
   blockquote {
     background: #fff;
     padding: 15px 20px;
@@ -313,23 +320,38 @@
       position: fixed;
       z-index: 1000;
       left: 0;
-      top: 0;
+      top: 0; /* Modifie l'alignement pour que le modal apparaisse en haut */
       width: 100%;
       height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.4); /* Fond semi-transparent */
     }
 
     .modal-content {
       background: white;
-      margin: 15% auto;
+      margin: 5% auto;
       padding: 20px;
       border: 1px solid #888;
-      width: 80%;
-      max-width: 500px;
+      width: 90%; /* Adjust width for better responsiveness */
+      max-width: 600px; /* Prevent overly wide modals */
+      max-height: 80vh; /* Prevent the modal from exceeding viewport height */
+      overflow-y: auto;
       border-radius: 10px;
-      text-align: center;
+      text-align: left;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      animation: slideIn 0.5s ease-in-out;
     }
+
+    @keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
     .close {
       color: #aaa;
@@ -397,8 +419,8 @@
 <div class="hero">
   <h1>Construisez l'avenir avec RobotUP Academy</h1>
   <p>Des formations innovantes pour les esprits curieux et créatifs</p>
-  <a href="#activites">Découvrir nos activités</a>
-  <a href="signup.html" class="Commencer" style="color:#dca96d;background-color: black; border: 1px solid white;">Commencer</a>
+  <a href="#activites" style="border-radius: 20px;">Découvrir nos activités</a>
+  <a href="signup.html" class="Commencer" style="color:#dca96d;background-color: black; border: 1px solid white;border-radius: 20px;">Inscrivez-vous</a>
 </div>
 
 <section id="vision" class="section">
@@ -424,11 +446,27 @@
 
     <div id="modal-robotique" class="modal">
       <div class="modal-content">
-        <span class="close" onclick="closeModal('modal-robotique')">&times;</span>
-        <h3>Robotique</h3>
-        <p>Ce programme enseigne la conception, le montage et la programmation de robots.</p>
+        <span class="close"  onclick="closeModal('modal-robotique')">&times;</span>
+        <h2>Formation Robotique</h2>
+        <p>Les participants découvrent la robotique à travers des défis ludiques, tout en apprenant par la pratique.</p>
+        <h3>Niveau Débutant</h3>
+        <ul>
+          <li>Introduction aux composants électroniques (capteurs, moteurs).</li>
+          <li>Bases de l’assemblage mécanique simple.</li>
+          <li>Programmation visuelle (Scratch, Blockly).</li>
+        </ul>
+        <p><strong>Exemple pratique :</strong> Construire un robot qui suit une ligne tracée au sol.</p>
+    
+        <h3>Niveau Intermédiaire</h3>
+        <ul>
+          <li>Programmation avancée avec Arduino ou Python.</li>
+          <li>Navigation autonome et utilisation des capteurs.</li>
+        </ul>
+        <p><strong>Exemple pratique :</strong> Concevoir un robot qui évite des obstacles dans un parcours.</p>
+        <button class="btn" href="signup.html">S'inscrire</button>
       </div>
     </div>
+    
     <!-- Carte Programmation -->
     <div class="activite-card" onclick="openModal('modal-programmation')">
       <div class="emoji">💻</div>
@@ -440,22 +478,69 @@
     <div id="modal-programmation" class="modal">
       <div class="modal-content">
         <span class="close" onclick="closeModal('modal-programmation')">&times;</span>
-        <h3>Programmation</h3>
-        <p>Explorez les bases de la programmation avec Python et JavaScript.</p>
+        <h2>Formation Programmation (Python & Web)</h2>
+        <p>Les participants apprennent en développant des projets interactifs, adaptés à leurs centres d’intérêt.</p>
+    
+        <h3>Python</h3>
+        <h4>Niveau Débutant</h4>
+        <ul>
+          <li>Syntaxe de base (variables, boucles, conditions).</li>
+          <li>Résolution de problèmes mathématiques simples.</li>
+        </ul>
+        <p><strong>Exemple pratique :</strong> Créer un jeu de devinettes et résoudre des calculs d’aire et de périmètre.</p>
+    
+        <h4>Niveau Intermédiaire</h4>
+        <ul>
+          <li>Structures de données (listes, dictionnaires).</li>
+          <li>Introduction à la programmation orientée objet (POO).</li>
+        </ul>
+        <p><strong>Exemple pratique :</strong> Développer une application pour résoudre des équations mathématiques.</p>
+    
+        <h3>Web</h3>
+        <h4>Niveau Débutant</h4>
+        <ul>
+          <li>HTML et CSS pour créer des pages web simples.</li>
+          <li>Introduction à JavaScript.</li>
+        </ul>
+        <p><strong>Exemple pratique :</strong> Créer un site web sur un hobby ou un centre d’intérêt personnel.</p>
+    
+        <h4>Niveau Intermédiaire</h4>
+        <ul>
+          <li>CSS avancé et animations.</li>
+          <li>JavaScript pour des interactions dynamiques.</li>
+        </ul>
+        <p><strong>Exemple pratique :</strong> Développer un mini-site avec une galerie interactive.</p>
+        <button class="btn">S'inscrire</button>
       </div>
     </div>
+    
     <!-- Carte Design -->
     <div class="activite-card" onclick="openModal('modal-design')">
       <div class="emoji">🎨</div>
-      <h3>Design</h3>
+      <h3>Dessin et design</h3>
       <p>Explorez le design graphique et l'UX/UI pour concevoir des interfaces modernes et intuitives.</p>
     </div>
 
     <div id="modal-design" class="modal">
       <div class="modal-content">
         <span class="close" onclick="closeModal('modal-design')">&times;</span>
-        <h3>Programmation</h3>
-        <p>Explorez les bases du design Artistique.</p>
+        <h2>Formation Dessin et Design</h2>
+        <p>Les ateliers sont pratiques et stimulent la créativité à travers l’exploration de diverses techniques artistiques.</p>
+    
+        <h3>Créativité Artistique (Débutant)</h3>
+        <ul>
+          <li>Bases du dessin : proportions, formes simples, couleurs.</li>
+          <li>Techniques avec crayons, feutres, et peinture.</li>
+        </ul>
+        <p><strong>Exemple pratique :</strong> Réaliser une scène simple (nature ou paysage). Expérimenter les mélanges de couleurs.</p>
+    
+        <h3>Design Graphique (Intermédiaire)</h3>
+        <ul>
+          <li>Techniques avancées : perspective, ombres, textures.</li>
+          <li>Initiation au design digital (Canva, Krita).</li>
+        </ul>
+        <p><strong>Exemple pratique :</strong> Concevoir une affiche publicitaire ou un logo pour un projet fictif.</p>
+        <button class="btn">S'inscrire</button>
       </div>
     </div>
     <!-- Carte Communication -->
@@ -468,10 +553,41 @@
     <div id="modal-communication" class="modal">
       <div class="modal-content">
         <span class="close" onclick="closeModal('modal-communication')">&times;</span>
-        <h3>Programmation</h3>
-        <p>Explorez les niveux de langue.</p>
+        <h2>Formation Communication (Anglais & Français)</h2>
+        <p>Les cours sont interactifs et centrés sur la communication orale à travers des jeux et des simulations.</p>
+    
+        <h3>Anglais</h3>
+        <h4>Niveau Débutant</h4>
+        <ul>
+          <li>Vocabulaire de base et expressions courantes.</li>
+          <li>Phrases simples pour des conversations du quotidien.</li>
+        </ul>
+        <p><strong>Exemple pratique :</strong> Jeux de rôle (commander dans un restaurant, se présenter).</p>
+    
+        <h4>Niveau Intermédiaire</h4>
+        <ul>
+          <li>Conversations sur des sujets variés (voyage, loisirs).</li>
+          <li>Compréhension orale avec des vidéos interactives.</li>
+        </ul>
+        <p><strong>Exemple pratique :</strong> Simuler une situation de voyage ou jouer au "jeu des devinettes".</p>
+    
+        <h3>Français</h3>
+        <h4>Niveau Débutant</h4>
+        <ul>
+          <li>Apprentissage des phrases simples et des salutations.</li>
+          <li>Reproduction de dialogues pour améliorer l’accent.</li>
+        </ul>
+        <p><strong>Exemple pratique :</strong> Simuler des échanges quotidiens (aller au marché, saluer un voisin).</p>
+    
+        <h4>Niveau Intermédiaire</h4>
+        <ul>
+          <li>Discussions sur des expériences personnelles.</li>
+          <li>Jeux éducatifs pour enrichir le vocabulaire.</li>
+        </ul>
+        <p><strong>Exemple pratique :</strong> Participer à des jeux de rôle (consulter un médecin, réserver une table).</p>
+        <button class="btn">S'inscrire</button>
       </div>
-    </div>
+    </div>    
     </div>
 </section>
 
