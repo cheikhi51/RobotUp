@@ -3,145 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-    <title>Inscription</title>
+    <title>Inscription - RobotUp Academy</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             background: rgb(119,21,189);
             background: linear-gradient(90deg, rgba(119,21,189,1) 0%, rgba(45,25,127,1) 17%, rgba(0,185,255,1) 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+           
         }
-
-        .signup-wrapper {
-            display: flex;
+        .form-container {
+            max-width: 800px;
+            margin: auto;
             background: white;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            max-width: 900px;
-            width: 100%;
         }
-
-        .signup-image {
-            width: 75%;
-            background: url('signup_image_prev_ui2.png') no-repeat center center / cover;
-        }
-
-        .signup-container {
-            width: 80%;
-            padding: 30px;
-        }
-
-        h1 {
-            text-align: center;
+        h2 {
             color: #253759;
-            margin-bottom: 20px;
+            text-align: center;
         }
-
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-top: 10px;
             font-weight: bold;
             color: #253759;
         }
-
-        input {
+        input, select {
             width: 100%;
             padding: 10px;
-            margin-bottom: 15px;
+            margin-top: 5px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 1rem;
         }
-
         input[type="submit"] {
-            background-color: #658cca;
+            background: #658cca;
             color: white;
+            font-weight: bold;
             border: none;
             cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: background-color 0.3s;
+            transition: background 0.3s;
         }
-
         input[type="submit"]:hover {
-            background-color: #253759;
+            background: #253759;
         }
-
-        .signup-footer {
-            text-align: center;
+        .child-group {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
             margin-top: 15px;
-            font-size: 0.9rem;
         }
-
-        .signup-footer a {
-            color: #658cca;
-            text-decoration: none;
-            font-weight: bold;
+        .add-child-btn {
+            background: #dca96d;
+            color: white;
+            margin-top: 10px;
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
         }
-
-        .signup-footer a:hover {
-            text-decoration: underline;
+        .note {
+            font-style: italic;
+            color: #666;
+            margin-top: 5px;
         }
-
-        /* Responsive Styles */
         @media (max-width: 768px) {
-            .signup-wrapper {
-                flex-direction: column;
-            }
-
-            .signup-image {
-                width: 100%;
-                height: 200px;
-            }
-
-            .signup-container {
-                width: 100%;
+            .form-container {
+                padding: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="signup-wrapper">
-        
-        <div class="signup-image"></div>
+    <div class="form-container">
+        <div class="logo" style="text-align: center;"><img src="robotup_logo_prev_ui.png" style="width: 100px;height: 70px;"></div>
+        <h2>Inscription - RobotUp Academy</h2>
+        <form action="inscription_multiple.php" method="POST">
+            <h3>Informations Parent</h3>
+            <label for="parent-name">Nom complet du parent :</label>
+            <input type="text" id="parent-name" name="parent-name" required>
 
-        <div class="signup-container">
-            <h1>Inscription</h1>
-            <form action="/signup" method="POST">
-                <label for="username">
-                    <i class="fas fa-user"></i> Nom d'utilisateur
-                </label>
-                <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur" required>
-            
-                <label for="email">
-                    <i class="fas fa-envelope"></i> Email
-                </label>
-                <input type="email" id="email" name="email" placeholder="Entrez votre adresse email" required>
-            
-                <label for="password">
-                    <i class="fas fa-lock"></i> Mot de passe
-                </label>
-                <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
-            
-                <label for="confirm-password">
-                    <i class="fas fa-check-circle"></i> Confirmer le mot de passe
-                </label>
-                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmez votre mot de passe" required>
-            
-                <input type="submit" value="S'inscrire">
-            </form>
-            
-            <div class="signup-footer">
-                <p>Vous avez déjà un compte ? <a href="login.html">Connectez-vous</a></p>
+            <label for="phone">Téléphone :</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required>
+
+            <h3>Informations Enfants</h3>
+            <div class="child-info">
+                <div class="child-group">
+                    <label for="child-name">Nom complet de l'enfant :</label>
+                    <input type="text" name="child-name[]" required>
+
+                    <label for="age">Âge de l'enfant :</label>
+                    <input type="number" name="age[]" min="5" required>
+
+                    <label for="activity">Activité choisie :</label>
+                    <select name="activity[]" required>
+                        <option value="Robotique - Débutant">Robotique - Débutant</option>
+                        <option value="Robotique - Intermédiaire">Robotique - Intermédiaire</option>
+                        <option value="Programmation Python - Débutant">Programmation Python - Débutant</option>
+                        <option value="Programmation Python - Intemédiaire">Programmation Python - Intemédiaire</option>
+                        <option value="Programmation Python - Avancé">Programmation Python - Avancé</option>
+                        <option value="Programmation Web - Débutant">Programmation Web - Débutant</option>
+                        <option value="Programmation Web - Intemédiaire">Programmation Web - Intemédiaire</option>
+                        <option value="Programmation Web - Avancé">Programmation Web - Avancé</option>
+                        <option value="Communication en Anglais - A">Communication en Anglais - A</option>
+                        <option value="Communication en Anglais - B">Communication en Anglais - B</option>
+                        <option value="Communication en Anglais - C">Communication en Anglais - C</option>
+                        <option value="Communication en Français - A">Communication en Français - A</option>
+                        <option value="Communication en Français - B">Communication en Français - B</option>
+                        <option value="Communication en Français - C">Communication en Français - C</option>
+                        <option value="Dessin et design - Initiation Créative">Dessin et design - Initiation Créative</option>
+                        <option value="Dessin et design - Perfectionnement Artistique">Dessin et design - Perfectionnement Artistique</option>
+                        <option value="Dessin et design - Maîtrise et Expression">Dessin et design - Maîtrise et Expression</option>
+                    </select>
+
+                    <label>
+                        <input type="checkbox" name="free-session[]" value="1"> Demande d'assister à une séance gratuite
+                    </label>
+
+                    <p class="note">Les horaires seront définis en accord avec les parents, en tenant compte des groupes programmés et des disponibilités des familles.</p>
+                </div>
             </div>
-        </div>
+
+            <button type="button" class="add-child-btn" onclick="addChild()">Ajouter un enfant</button>
+            <br><br>
+            <input type="submit" value="Inscrire">
+        </form>
     </div>
+
+    <script>
+        function addChild() {
+            const childGroup = document.querySelector('.child-group');
+            const clone = childGroup.cloneNode(true);
+            document.querySelector('.child-info').appendChild(clone);
+        }
+    </script>
 </body>
 </html>
