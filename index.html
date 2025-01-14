@@ -18,6 +18,9 @@
       background: #253759;
       border-radius: 20px;
     }
+    html{
+      scroll-behavior: smooth;
+    }
 
     /* Style global */
     body {
@@ -25,7 +28,6 @@
       margin: 0;
       padding: 0;
       color: #253759;
-      scroll-behavior: smooth;
     }
 
     header {
@@ -334,8 +336,8 @@
       margin: 5% auto;
       padding: 20px;
       border: 1px solid #888;
-      width: 90%; /* Adjust width for better responsiveness */
-      max-width: 600px; /* Prevent overly wide modals */
+      width: 80%; /* Adjust width for better responsiveness */
+      max-width: 500px; /* Prevent overly wide modals */
       max-height: 80vh; /* Prevent the modal from exceeding viewport height */
       overflow-y: auto;
       border-radius: 10px;
@@ -377,6 +379,14 @@
         margin: 0 auto;
         width: 90%;
       }
+      .modal{
+        width: 90%;
+      }
+      nav{
+        width: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
     }
 
     footer {
@@ -414,7 +424,7 @@
     <a href="#activites">Activités Formations</a>
     <a href="#temoignages">Témoignages</a>
     <a href="#contact">Contact</a>
-    <a href="signup.html" style="margin-right: 8px;">S'inscrire</a>
+    <a href="signup.html" >S'inscrire</a>
   </nav>
 </header>
 
@@ -692,6 +702,5 @@
     });
   };
 </script>
-
 </body>
 </html>
